@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-belmicro-zebra
+  labels:
+    app: api-belmicro-zebra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-belmicro-zebra
+  template:
+    metadata:
+      labels:
+        app: api-belmicro-zebra
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: api-belmicro-zebra
+        image: gru.ocir.io/grk57jskwo0a/belmicro-registry/api-belmicro-zebra:1.2.0
+        ports:
+        - name: http
+          containerPort: 8080

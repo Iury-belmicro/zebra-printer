@@ -1,0 +1,13 @@
+version: '3.8'
+networks:
+  belmicro-docker-networks:
+    external: true  
+
+services:
+  api-belmicro-zebra:
+    networks:
+      - belmicro-docker-networks
+    image: gru.ocir.io/grk57jskwo0a/belmicro-registry/api-belmicro-zebra:1.2.0
+    container_name: api-belmicro-zebra
+    ports:
+      - "8082:8080"
